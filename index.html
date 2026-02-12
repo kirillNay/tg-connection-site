@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ru" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TG Connection</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Outfit', sans-serif; }
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .phone-frame {
+      background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+      border-radius: 2.5rem;
+      padding: 0.5rem;
+      box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    
+    .phone-screen {
+      background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+      border-radius: 2rem;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .notch {
+      width: 40%;
+      height: 1.5rem;
+      background: #1a1a2e;
+      border-radius: 0 0 1rem 1rem;
+      margin: 0 auto;
+      position: relative;
+      z-index: 5;
+    }
+
+    .screenshot-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #2990FF 0%, #2990FF 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gradient-blob-top-right {
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .gradient-blob-bottom-left {
+      position: absolute;
+      bottom: -15%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 10;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full gradient-bg">
+  <div class="gradient-blob-top-right"></div>
+  <div class="gradient-blob-bottom-left"></div>
+
+  <main class="w-full h-full content-wrapper py-12 px-6 overflow-auto">
+   <!-- Header Section -->
+   <header class="text-center mb-16">
+    <div class="inline-flex items-center gap-3 mb-6">
+     <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center shadow-lg backdrop-blur-sm overflow-hidden">
+      <img src="icon.png" alt="TG Connection icon" class="w-full h-full object-cover" />
+     </div>
+    </div>
+    <h1 id="app-name" class="text-5xl md:text-6xl font-bold text-white mb-4">TG Connection</h1>
+    <p id="app-tagline" class="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
+      TG Connection — это диагностическое приложение для анализа качества, стабильности и надежности подключения к серверам Telegram.
+    </p>
+   </header>
+
+   <!-- Screenshots Section -->
+   <section class="max-w-6xl mx-auto mb-20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+     
+     <!-- Screen 1 -->
+     <div class="text-center">
+      <div class="phone-frame mx-auto" style="max-width: 240px;">
+       <div class="phone-screen aspect-[9/19]">
+        <img src="1.png" alt="Screenshot 1" class="screenshot-img" />
+        <div class="notch"></div>
+       </div>
+      </div>
+      <div class="mt-6">
+       <h3 id="screen-1-title" class="text-xl font-semibold text-white mb-2">Узнай свое качество подключения к Телеграм</h3>
+       <p id="screen-1-desc" class="text-white/80 text-sm px-4"></p>
+      </div>
+     </div>
+
+     <!-- Screen 2 -->
+     <div class="text-center">
+      <div class="phone-frame mx-auto" style="max-width: 240px;">
+       <div class="phone-screen aspect-[9/19]">
+        <img src="2.png" alt="Screenshot 2" class="screenshot-img" />
+        <div class="notch"></div>
+       </div>
+      </div>
+      <div class="mt-6">
+       <h3 id="screen-2-title" class="text-xl font-semibold text-white mb-2">Проверь скорость и стабильность</h3>
+       <p id="screen-2-desc" class="text-white/80 text-sm px-4"></p>
+      </div>
+     </div>
+
+     <!-- Screen 3 -->
+     <div class="text-center">
+      <div class="phone-frame mx-auto" style="max-width: 240px;">
+       <div class="phone-screen aspect-[9/19]">
+        <img src="3.png" alt="Screenshot 3" class="screenshot-img" />
+        <div class="notch"></div>
+       </div>
+      </div>
+      <div class="mt-6">
+       <h3 id="screen-3-title" class="text-xl font-semibold text-white mb-2">Понимай, что мешает соединению</h3>
+       <p id="screen-3-desc" class="text-white/80 text-sm px-4"></p>
+      </div>
+     </div>
+
+    </div>
+   </section>
+
+   <!-- CTA Section -->
+    <section class="text-center pb-8">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center max-w-xl mx-auto">
+
+        <a
+          href="https://play.google.com/store/apps/details?id=nay.kirill.tgconnection"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex-1 min-w-[220px] bg-white/25 hover:bg-white/35 backdrop-blur-sm text-white font-semibold text-lg px-8 py-4 rounded-full shadow-lg transition-all duration-300 border border-white/30 inline-flex items-center justify-center gap-3"
+        >
+          <span id="playmarket-text">Google Play</span>
+        </a>
+
+        <a
+          href="https://apps.rustore.ru/app/nay.kirill.tgconnection"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex-1 min-w-[220px] bg-white/25 hover:bg-white/35 backdrop-blur-sm text-white font-semibold text-lg px-8 py-4 rounded-full shadow-lg transition-all duration-300 border border-white/30 inline-flex items-center justify-center gap-3"
+        >
+          <span id="rustore-text">RuStore</span>
+        </a>
+
+      </div>
+
+      <div class="mt-6">
+        <a
+          href="https://kirillnay.github.io/tg-connection-privacy/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-white/90 hover:text-white underline underline-offset-4 text-sm"
+        >
+          Политика конфиденциальности
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const defaultConfig = {
+      app_name: 'TG Connection',
+      app_tagline: 'TG Connection — это диагностическое приложение для анализа качества, стабильности и надежности подключения к серверам Telegram.',
+      screen_1_title: 'Узнай свое качество подключения к Телеграм',
+      screen_1_desc: '',
+      screen_2_title: 'Проверь скорость и стабильность',
+      screen_2_desc: '',
+      screen_3_title: 'Понимай, что мешает соединению',
+      screen_3_desc: '',
+      playmarket_text: 'Google Play',
+      rustore_text: 'RuStore'
+    };
+
+    async function onConfigChange(config) {
+      document.getElementById('app-name').textContent = config.app_name || defaultConfig.app_name;
+      document.getElementById('app-tagline').textContent = config.app_tagline || defaultConfig.app_tagline;
+      document.getElementById('screen-1-title').textContent = config.screen_1_title || defaultConfig.screen_1_title;
+      document.getElementById('screen-1-desc').textContent = config.screen_1_desc || defaultConfig.screen_1_desc;
+      document.getElementById('screen-2-title').textContent = config.screen_2_title || defaultConfig.screen_2_title;
+      document.getElementById('screen-2-desc').textContent = config.screen_2_desc || defaultConfig.screen_2_desc;
+      document.getElementById('screen-3-title').textContent = config.screen_3_title || defaultConfig.screen_3_title;
+      document.getElementById('screen-3-desc').textContent = config.screen_3_desc || defaultConfig.screen_3_desc;
+      document.getElementById('playmarket-text').textContent = config.playmarket_text || defaultConfig.playmarket_text;
+      document.getElementById('rustore-text').textContent = config.rustore_text || defaultConfig.rustore_text;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['app_name', config.app_name || defaultConfig.app_name],
+        ['app_tagline', config.app_tagline || defaultConfig.app_tagline],
+        ['screen_1_title', config.screen_1_title || defaultConfig.screen_1_title],
+        ['screen_1_desc', config.screen_1_desc || defaultConfig.screen_1_desc],
+        ['screen_2_title', config.screen_2_title || defaultConfig.screen_2_title],
+        ['screen_2_desc', config.screen_2_desc || defaultConfig.screen_2_desc],
+        ['screen_3_title', config.screen_3_title || defaultConfig.screen_3_title],
+        ['screen_3_desc', config.screen_3_desc || defaultConfig.screen_3_desc],
+        ['playmarket_text', config.playmarket_text || defaultConfig.playmarket_text],
+        ['rustore_text', config.rustore_text || defaultConfig.rustore_text]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ccee95d239beff0',t:'MTc3MDkyODkzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+ </body>
+</html>
